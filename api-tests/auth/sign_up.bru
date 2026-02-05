@@ -1,0 +1,29 @@
+meta {
+  name: sign_up
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{apiUrl}}/api/auth/partner/signup
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "firstName": "John",
+    "lastName": "Doe",
+    "email": "john.doe@example.com",
+    "phone": "+1234567890",
+    "password": "SecurePass123",
+    "confirmPassword": "SecurePass123",
+    "agreeToTerms": true
+  }
+}
+
+script:post-response {
+  bru.setEnvVar("accessToken", res.body.data.token);
+  bru.setEnvVar("refreshToken", res.body.data.refreshToken);
+  bru.setEnvVar("userId", res.body.data.user.id);
+}

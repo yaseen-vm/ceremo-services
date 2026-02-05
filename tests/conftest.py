@@ -14,6 +14,11 @@ def test_config():
         ENVIRONMENT="test",
         DEBUG=True,
         SECRET_KEY="test-secret",
+        JWT_SECRET_KEY="test-jwt-secret",
+        JWT_EXPIRATION_HOURS=24,
+        REFRESH_TOKEN_EXPIRATION_HOURS=720,
+        MIN_PASSWORD_LENGTH=8,
+        REMEMBER_ME_MULTIPLIER=24,
     )
 
 
